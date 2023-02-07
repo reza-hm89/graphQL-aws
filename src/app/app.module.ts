@@ -14,6 +14,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddTodoComponent } from './dialogs/add-todo/add-todo.component';
 import { FormsModule } from '@angular/forms';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { FormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     MatTableModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
