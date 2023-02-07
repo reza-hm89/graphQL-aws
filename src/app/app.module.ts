@@ -20,7 +20,7 @@ import { SharedModule } from './shared/shared.module';
   declarations: [
     AppComponent,
     AddTodoComponent,
-    EditTodoComponent
+    EditTodoComponent,
   ],
   imports: [
     BrowserModule,

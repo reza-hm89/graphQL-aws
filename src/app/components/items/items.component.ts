@@ -1,21 +1,18 @@
-import { EditTodoComponent } from './dialogs/edit-todo/edit-todo.component';
-import { APIService, DeleteTodoInput, Todo, UpdateTodoInput, CreateTodoInput } from './API.service';
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { APIService, CreateTodoInput, DeleteTodoInput, Todo, UpdateTodoInput } from 'src/app/API.service';
 import { Amplify } from 'aws-amplify';
 import awsmobile from 'src/aws-exports';
-import { MatDialog } from '@angular/material/dialog';
-import { AddTodoComponent } from './dialogs/add-todo/add-todo.component';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { AddTodoComponent } from 'src/app/dialogs/add-todo/add-todo.component';
+import { EditTodoComponent } from 'src/app/dialogs/edit-todo/edit-todo.component';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html'
+  selector: 'app-items',
+  templateUrl: './items.component.html'
 })
-export class AppComponent implements OnInit {
-  @ViewChild(MatTable) table: MatTable<Todo>;
-  title = 'amplify-aws';
+export class ItemsComponent implements OnInit {
+
   todos = Array<Todo | null>();
-  displayedColumns: string[] = ['name', 'desc', 'date', 'edit', 'delete'];
 
   constructor(private api: APIService, public dialog: MatDialog,
     private changeDetectorRefs: ChangeDetectorRef) {
@@ -41,7 +38,6 @@ export class AppComponent implements OnInit {
         /* create todo */
         this.api.CreateTodo(result).then(res => {
           this.todos.unshift(res)
-          this.table.renderRows();
         });
       }
     });
@@ -56,7 +52,6 @@ export class AppComponent implements OnInit {
         /* update todo */
         this.api.UpdateTodo(result).then(res => {
           this.todos[index] = res;
-          this.table.renderRows();
         });
       }
     });
@@ -69,7 +64,5 @@ export class AppComponent implements OnInit {
     };
     this.api.DeleteTodo(deleteId);
     this.todos.splice(index, 1);
-    this.table.renderRows();
   }
-
 }
