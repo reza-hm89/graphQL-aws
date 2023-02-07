@@ -15,7 +15,7 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 export class AppComponent implements OnInit {
   @ViewChild(MatTable) table: MatTable<Todo>;
   title = 'amplify-aws';
-  todos = new MatTableDataSource<Todo | null>();
+  todos = Array<Todo | null>();
   displayedColumns: string[] = ['name', 'desc', 'date', 'edit', 'delete'];
 
   constructor(private api: APIService, public dialog: MatDialog,
@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
 
   async get() {
     await this.api.ListTodos().then((event) => {
-      this.todos.data = event.items;
+      this.todos = event.items;
     });
   }
 
@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
       if (result) {
         /* create todo */
         this.api.CreateTodo(result).then(res => {
-          this.todos.data.unshift(res)
+          this.todos.unshift(res)
           this.table.renderRows();
         });
       }
@@ -50,13 +50,13 @@ export class AppComponent implements OnInit {
 
   editTodo(index: number) {
     const dialogRef = this.dialog.open(EditTodoComponent, {
-      data: this.todos.data[index],
+      data: this.todos[index],
     });
     dialogRef.afterClosed().subscribe((result: UpdateTodoInput) => {
       if (result) {
         /* update todo */
         this.api.UpdateTodo(result).then(res => {
-          this.todos.data[index] = res;
+          this.todos[index] = res;
           this.table.renderRows();
         });
       }
@@ -66,10 +66,10 @@ export class AppComponent implements OnInit {
   /* delete todo */
   deleteTodo(index: number) {
     const deleteId: DeleteTodoInput = {
-      id: this.todos.data[index].id
+      id: this.todos[index].id
     };
     this.api.DeleteTodo(deleteId);
-    this.todos.data.splice(index, 1);
+    this.todos.splice(index, 1);
     this.table.renderRows();
   }
 
