@@ -73,6 +73,24 @@ export class ItemsComponent implements OnInit {
       }
     });
   }
+
+  mouseEnter(index: number) {
+    console.log("mouse enter : " + index);
+    const editDiv = document.getElementById('edit-' + index);
+    const deleteDiv = document.getElementById('delete-' + index);
+
+    editDiv.classList.remove("hide");
+    deleteDiv.classList.remove("hide");
+  }
+
+  mouseLeave(index: number) {
+    console.log('mouse leave :' + index);
+    const editDiv = document.getElementById('edit-' + index);
+    const deleteDiv = document.getElementById('delete-' + index);
+
+    editDiv.classList.add("hide");
+    deleteDiv.classList.add("hide");
+  }
 }
 
 @Component({
