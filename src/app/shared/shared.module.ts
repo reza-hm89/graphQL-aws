@@ -10,7 +10,7 @@ import { ItemsComponent } from '../components/items/items.component';
   declarations: [
     LayoutComponent,
     NavbarComponent,
-    ItemsComponent
+    ItemsComponent,
   ],
   imports: [
     CommonModule

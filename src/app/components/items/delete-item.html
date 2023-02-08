@@ -1,0 +1,8 @@
+<h1 class="title">Delete item</h1>
+<div mat-dialog-content>
+    You are about to delete DreamWorks Inc. Would you like to proceed?
+</div>
+<div mat-dialog-actions>
+    <button class="cancel-btn" mat-dialog-close>Cancel</button>
+    <button class="accept-btn" [mat-dialog-close]="true" cdkFocusInitial>Yes, delete</button>
+</div>

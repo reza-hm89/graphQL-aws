@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { APIService, CreateTodoInput, DeleteTodoInput, Todo, UpdateTodoInput } from 'src/app/API.service';
 import { Amplify } from 'aws-amplify';
 import awsmobile from 'src/aws-exports';
@@ -59,10 +59,45 @@ export class ItemsComponent implements OnInit {
 
   /* delete todo */
   deleteTodo(index: number) {
-    const deleteId: DeleteTodoInput = {
-      id: this.todos[index].id
-    };
-    this.api.DeleteTodo(deleteId);
-    this.todos.splice(index, 1);
+    const dialogRef = this.dialog.open(DeleteItemDialog, {
+      width: '31rem',
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        /* delete todo */
+        const deleteId: DeleteTodoInput = {
+          id: this.todos[index].id
+        };
+        this.api.DeleteTodo(deleteId);
+        this.todos.splice(index, 1);
+      }
+    });
   }
+
+  mouseEnter(index: number) {
+    console.log("mouse enter : " + index);
+    const editDiv = document.getElementById('edit-' + index);
+    const deleteDiv = document.getElementById('delete-' + index);
+
+    editDiv.classList.remove("hide");
+    deleteDiv.classList.remove("hide");
+  }
+
+  mouseLeave(index: number) {
+    console.log('mouse leave :' + index);
+    const editDiv = document.getElementById('edit-' + index);
+    const deleteDiv = document.getElementById('delete-' + index);
+
+    editDiv.classList.add("hide");
+    deleteDiv.classList.add("hide");
+  }
+}
+
+@Component({
+  selector: 'delete-item',
+  templateUrl: './delete-item.html',
+  styleUrls: ['../../dialogs/add-todo/add-todo.component.scss']
+})
+export class DeleteItemDialog {
+  constructor(public dialogRef: MatDialogRef<DeleteItemDialog>) { }
 }
