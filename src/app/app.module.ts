@@ -15,12 +15,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddTodoComponent } from './dialogs/add-todo/add-todo.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
+import { DeleteItemDialog } from './components/items/items.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddTodoComponent,
     EditTodoComponent,
+    DeleteItemDialog
   ],
   imports: [
     BrowserModule,

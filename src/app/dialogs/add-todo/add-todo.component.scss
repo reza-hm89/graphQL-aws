@@ -1,0 +1,41 @@
+.title {
+    font-family: Majorant;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 25px 25px 0 25px;
+    line-height: 21px;
+}
+
+.accept-btn {
+    font-family: Majorant;
+    font-weight: bold;
+    display: flex;
+    border: none;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 24px;
+    gap: 8px;
+    cursor: pointer;
+    width: 240px;
+    height: 56px;
+
+    background: #952212;
+    color: white;
+}
+
+.cancel-btn {
+    font-family: Majorant;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 24px;
+    gap: 8px;
+    cursor: pointer;
+    width: 240px;
+    height: 56px;
+    border: 3px solid #3A3A3A;
+    background: #ffff;
+}

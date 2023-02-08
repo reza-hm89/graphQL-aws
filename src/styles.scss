@@ -1,11 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --primary-color: #fafafa;
+    --secondary-color: #dfe0ff;
+    --white: #ffff;
+    --dark: #1b1b1f;
+    --text-color: #797a81;
+}
+
+* {
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+button:focus { outline: none; }
+
+@font-face {
+    font-family: Majorant;
+    font-style: normal;
+    font-weight: normal;
+    src: url("./assets/fonts/MajorantTRIAL-Rg.otf");
+}
 
 html,
 body {
     margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-    background-color: #fafafa;
-    color: #1b1b1f;
+    font-family: Majorant, roboto, Arial;
+    font-style: normal;
+    font-weight: 400;
+    background-color: var(--primary-color);
+    color: var(--dark);
 }
 
 .d-flex {
@@ -20,25 +45,23 @@ body {
         /* Navigation Drawer */
         box-sizing: border-box;
         /* Auto layout */
-
+        width: 26vw;
         flex-direction: column;
         align-items: center;
         padding: 0px;
         height: 100vh;
         /* On Primary */
 
-        background: #ffffff;
+        background: var(--white);
         /* Primary Container */
 
-        border-right: 1px solid #dfe0ff;
+        border-right: 1px solid var(--secondary-color);
 
         .header {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             padding: 24px 0px 40px;
-            width: 360px;
-            height: 100px;
             /* Inside auto layout */
 
             flex: none;
@@ -78,86 +101,74 @@ body {
         }
 
         .side-menu {
-            ul {
-                li {
+            .active {
+                cursor: pointer;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                padding: 8px 40px;
+                width: 21rem;
+                height: 56px;
+                background: rgb(255 228 224);
+                flex: none;
+                order: 1;
+                flex-grow: 0;
+
+                .text-fill {
+                    /* Text Fill */
+                    /* Auto layout */
+
                     display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: flex-start;
-                    padding: 0;
-                    gap: 10px;
-                    width: 320px;
-                    height: 64px;
+                    flex-direction: row;
+                    align-items: center;
+                    padding: 0px;
+                    gap: 16px;
+                    width: 90px;
+                    height: 24px;
                     /* Inside auto layout */
 
                     flex: none;
-                    order: 1;
+                    order: 0;
                     flex-grow: 0;
 
-                    .text-fill {
-                        /* Text Fill */
-                        /* Auto layout */
+                    .text {
+                        width: 50px;
+                        height: 21px;
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 16px;
+                        line-height: 21px;
+                        color: #952212;
+                        text-align: center;
+                        letter-spacing: 0.1px;
+                        flex: none;
+                        order: 1;
+                        flex-grow: 0;
+                    }
 
-                        display: flex;
-                        flex-direction: row;
-                        align-items: center;
-                        padding: 0px;
-                        gap: 16px;
-                        width: 90px;
-                        height: 24px;
+                    .menu_icon {
+                        width: 24px;
+                        height: 20px;
                         /* Inside auto layout */
-
                         flex: none;
                         order: 0;
                         flex-grow: 0;
-
-                        .text {
-                            width: 50px;
-                            height: 21px;
-                            font-family: "Majorant";
-                            font-style: normal;
-                            font-weight: 400;
-                            font-size: 16px;
-                            line-height: 21px;
-                            /* identical to box height */
-
-                            text-align: center;
-                            letter-spacing: 0.1px;
-                            /* Surface/Surface Variant */
-
-                            color: #797a81;
-                            /* Inside auto layout */
-
-                            flex: none;
-                            order: 1;
-                            flex-grow: 0;
-                        }
-
-                        .menu_icon {
-                            /* legend_toggle */
-
-                            width: 24px;
-                            height: 24px;
-                            /* Inside auto layout */
-
-                            flex: none;
-                            order: 0;
-                            flex-grow: 0;
-                        }
                     }
+                }
 
-                    :hover {
-                        background: #ffe4e0;
-                    }
+                :hover {
+                    background: #ffe4e0;
                 }
             }
         }
     }
 
     .header {
+        width: 73vw;
+
         .Rectangle2 {
             position: relative;
-            width: 1112px;
             height: 24px;
         }
 
@@ -167,23 +178,19 @@ body {
 
             .Frame141 {
                 /* Frame 141 */
-                /* Auto layout */
-
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
                 align-items: center;
-                padding: 0px 40px;
+                padding: 0px 2rem;
                 gap: 5rem;
                 position: relative;
                 height: 80px;
 
                 .Items {
                     /* Items */
-
                     width: 54px;
                     height: 20px;
-                    font-family: "Majorant";
                     font-style: normal;
                     font-weight: 400;
                     font-size: 20px;
@@ -204,7 +211,9 @@ body {
                 .btn {
                     /* Button Large fill */
                     /* Auto layout */
-                    color: white;
+                    font-family: Majorant;
+                    cursor: pointer;
+                    color: var(--white);
                     display: flex;
                     flex-direction: row;
                     justify-content: center;
@@ -232,7 +241,6 @@ body {
                 height: 52px;
                 /* Display/Medium */
 
-                font-family: "Majorant";
                 font-style: normal;
                 font-weight: 400;
                 font-size: 45px;
@@ -263,7 +271,7 @@ body {
                 text-align: center;
                 /* Surface/Surface Variant */
 
-                color: #797a81;
+                color: var(--text-color);
                 /* Inside auto layout */
 
                 flex: none;
@@ -297,7 +305,7 @@ body {
         th {
             font-weight: 500 !important;
             font-size: 12px;
-            color: #797a81;
+            color: var(--text-color);
         }
     }
 }
@@ -305,24 +313,28 @@ body {
 .table-head {
     &-item {
         flex: 1;
-        padding: 0px 5rem;
+        padding: 0px 2rem;
     }
 }
 
 .sort-by:before,
 .sort-by:after {
-	border: 4px solid transparent;
-    border-bottom-color: #666;
-	content: "";
-	display: block;
-	height: 0;
-	right: 5px;
-	top: 50%;
-	width: 0;
+    border: 4px solid transparent;
+    content: "";
+    display: block;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.sort-by:before {
+    border-bottom-color: #cccccc;
+}
+.sort-by:after {
+    border-top-color: #cccccc;
+    margin-top: 3px;
 }
 
 .table-body {
-
     &:nth-child(odd) {
         background-color: #f1f1f1;
     }
@@ -333,7 +345,7 @@ body {
 
     &-item1 {
         flex: 2.5;
-        padding: 0px 5rem;
+        padding: 0px 2rem;
     }
 
     &-item2 {
@@ -353,4 +365,3 @@ body {
         padding: 0px;
     }
 }
-
